@@ -134,7 +134,7 @@ class DataRetriever:
                 is_there_ShowMore = False
                 print("no button clicked")
                 pass
-    def save_data_to_Excel(workbook, sheet_name):
+    def save_data_to_Excel(self, workbook, sheet_name):
     
         worksheet = workbook.worksheet(sheet_name)
     
@@ -289,7 +289,7 @@ def main():
     bm.search_the_phrase("Israel")
     rd = DataRetriever(bm)
     rd.retrive_data(2, "Israel")
-    save_data_to_Excel(workbook, sheet_name)
+    rd.save_data_to_Excel(workbook, sheet_name)
     workbook.save(excel_file_path)
 
     # Saving the workbook
