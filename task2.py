@@ -43,7 +43,7 @@ def retrive_data(num_months_ago):
 
 @task
 def main():
-    bm = BrowserManager()
+    bm = b()
     url = "https://www.aljazeera.com/"
     bm.opening_the_news_Site(url)
     bm.search_the_phrase("Business")
