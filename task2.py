@@ -141,15 +141,17 @@ class DataRetriever:
         worksheet = workbook.worksheet(sheet_name)
     
         headers = ["No", "Title", "Date", "Description", "Picture Filename", "Count", "Contains Money"]
-    
+        print("inside save to excel function")
         try:
             # Fetch the created work items and write them to the Excel file
             for item in workitems.inputs:
                 row = [item.payload[header] for header in headers]
+                print("inside save to excel for loop")
+                print(row, "Rowwwwwww")
                 worksheet.append_rows_to_worksheet([row], name=sheet_name)
             print("workitems finished successfully")
         except Exception as e:
-            print(e)
+            print(e, "save item didn't work)
             pass
     # getting the date and description from the excert of the article
     def extract_before_ellipsis(self, text):
