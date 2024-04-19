@@ -62,8 +62,8 @@ class DataRetriever:
                 excert = browser.find_element("tag:p",parent=article)
                 print("after excert")
                 # getting time and description of the post from excert
-                time_of_post, description  = extract_before_ellipsis(excert.text)
-                article_date = formated_article_date(time_of_post)
+                time_of_post, description  = self.extract_before_ellipsis(excert.text)
+                article_date = self.formated_article_date(time_of_post)
                 print("after article date")
                 # check if the artices does contains date
                 if(article_date == None):
@@ -71,14 +71,14 @@ class DataRetriever:
                 try:
 
                     # checking the article date is in the time period of the input
-                    if is_within_time_frame(article_date, target_date):
+                    if self.is_within_time_frame(article_date, target_date):
                         title= browser.find_element("tag:h3", parent=article)
                         if title.text not in articles_titiles:
                             articles_titiles.append(title.text)
                             
                             # does the title or description contains money
                             # checking how many times the search keyword apears in title and description
-                            no_of_search_phrase, contains = no_of_topic_and_money_amount(title.text, 
+                            no_of_search_phrase, contains = self.no_of_topic_and_money_amount(title.text, 
                                                                                           description, 
                                                                                           search_phrase)
                             # finding the imgae of each article
@@ -145,11 +145,10 @@ class DataRetriever:
         except Exception as e:
             print(e)
             pass
-
-####################################
+    
     # getting the date and description from the excert of the article
-    def extract_before_ellipsis(text):
-        
+    def extract_before_ellipsis(self, text):
+        self.text = text
         # checking if the text contains the excert
         if len(text) <=0:
             print("extract text len 0")
@@ -255,8 +254,6 @@ class DataRetriever:
     
         # returning the number of times money appears and if there is search phrase in both
         return countT + countD,  bool(matchesT + matchesD)
-
-##################################3
 
 
 
