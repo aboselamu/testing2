@@ -100,10 +100,11 @@ class DataRetriever:
                                                 }
     
                             # Making work items to be saved on file
-                            for article in articles:
-                                workitems.outputs.create(payload=ready_article)
-                                print("work item created")
-                                # print(
+                            # for article in articles:
+                            workitems.outputs.create(payload=ready_article)
+                            print("work item created")
+                            item = workitems.inputs.current
+                            print("Received payload:", item.payload)
     
     
                             # data.append([counter,title.text, article_date, description, 
