@@ -12,11 +12,11 @@ from datetime import datetime, timedelta
 from robocorp.tasks import get_output_dir
 from tasks import BrowserManager as b
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 #@task
-secrets =vault.get_secret('alijazeersite') 
+# secrets =vault.get_secret('alijazeersite') 
 
 
 
@@ -39,3 +39,11 @@ def retrive_data(num_months_ago):
         print('Sucessull all')
     except Exception as e:
         print(e, "NOOOOOO")
+
+@task
+def main():
+    bm = BrowserManager()
+    url = "https://www.aljazeera.com/"
+    bm.opening_the_news_Site(url)
+    bm.search_the_phrase("Business")
+    retrive_data(2)
