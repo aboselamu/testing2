@@ -299,7 +299,7 @@ def main():
     bm.opening_the_news_Site(url)
     bm.search_the_phrase("Business")
     rd = DataRetriever(bm)
-    rd.retrive_data(2, "Business")
+    rd.retrive_data(1, "Business")
     rd.save_data_to_Excel(workbook, sheet_name)
     # workbook.save(excel_file_path)
 
