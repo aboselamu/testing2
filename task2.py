@@ -150,6 +150,7 @@ class DataRetriever:
         
         # checking if the text contains the excert
         if len(text) <=0:
+            print("extract text len 0")
             return 
     
         # Split the text at '...'
@@ -160,7 +161,8 @@ class DataRetriever:
             # Take the first part, before the '...'
             date_part = parts[0]
             description_part=parts[1]
-        except:
+        except Exception as e:
+            print(e)
             pass
         description_part.replace("Â","")
     
