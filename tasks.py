@@ -1,5 +1,16 @@
 from RPA.Browser.Selenium import Selenium 
-
+import re
+import time
+import requests
+import logging
+from pathlib import Path
+from robocorp import vault
+from robocorp import excel
+from robocorp import storage
+from datetime import datetime
+from robocorp.tasks import task
+from datetime import datetime, timedelta
+from robocorp.tasks import get_output_dir
 
 class BrowserManager:
     def __init__(self):
@@ -9,7 +20,7 @@ class BrowserManager:
     def opening_the_news_Site(self, url):
 
         # logger.info("Opening the news site.")
-        browser = Selenium(auto_close = False)
+        self.browser = Selenium(auto_close = False)
         
         # Define Chrome options to disable popup blocking
         options = [
@@ -20,7 +31,7 @@ class BrowserManager:
         
 
         # Open browser with specified options
-        browser.open_available_browser(url, 
+        self.browser.open_available_browser(url, 
                                             browser_selection="Chrome", 
                                             options=options)
         # browser.close_all_browsers()
@@ -38,7 +49,7 @@ class BrowserManager:
         # if the site contains collecting cookies 
         try:
             print("inside tyr")
-            sbrowser.click_button('Allow all')
+            self.browser.click_button('Allow all')
             print("it clicked allow")
 
         except:
@@ -66,8 +77,9 @@ class BrowserManager:
         # sort by time
         dropdown_locator = "//select[@id='search-sort-option']/option[1]" 
         self.browser.click_element(dropdown_locator)
-
-bm = BrowserManager()
-url = "https://www.aljazeera.com/"
-bm.opening_the_news_Site(url)
-bm.search_the_phrase()
+@task
+def main():
+    bm = BrowserManager()
+    url = "https://www.aljazeera.com/"
+    bm.opening_the_news_Site(url)
+    bm.search_the_phrase()
