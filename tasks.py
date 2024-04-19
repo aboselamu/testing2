@@ -72,9 +72,11 @@ class BrowserManager:
             locator2 = "//select[@id='search-sort-option']"
             self.browser.wait_until_element_is_visible(locator2, timeout=10)
             self.browser.click_element(locator2)
+            print("finding the search area")
         except:
             return "No news associated with the search phrase"
 
         # sort by time
         dropdown_locator = "//select[@id='search-sort-option']/option[1]" 
         self.browser.click_element(dropdown_locator)
+        print("completed opening and searching")
