@@ -64,7 +64,10 @@ class DataRetriever:
                 # getting time and description of the post from excert
                 time_of_post, description  = self.extract_before_ellipsis(excert.text)
                 print(time_of_post, description, "check here")
-                article_date = self.formated_article_date(time_of_post)
+                try:
+                    article_date = self.formated_article_date(time_of_post)
+                except Exception as e:
+                    print(e, "article, date format")
                 print("after article date")
                 # check if the artices does contains date
                 if(article_date == None):
@@ -179,7 +182,7 @@ class DataRetriever:
         # Defining possible hours, minutes and seconds 
         possible_hms = ["second", "seconds","min\xadutes", 
                             "minute", "minutes", "hour","hours"]
-    
+        print(possible_hms)
         possible_days = ["day", "days"]
     
         possible_months_format_One =["January", "Feburary", "March", "April", 
