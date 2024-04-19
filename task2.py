@@ -152,7 +152,7 @@ class DataRetriever:
             		return e
             	print("inside save to excel for loop")
             	print(row, "Rowwwwwww")
-            	worksheet.append_rows_to_worksheet([row], name=sheet_name)
+            	worksheet.append_rows_to_worksheet([row], header=False)
             	worksheet.save_workbook()
             print("workitems finished successfully")
         except Exception as e:
@@ -287,7 +287,7 @@ def main():
     sheet_name = "Sheet1"
     worksheet = workbook.worksheet(sheet_name)
     row_to_append = [
-        ["No", "Title", "Date", "Description", "Picture Filename", "Count", "Contains Money"]
+        ["No1", "Title", "Date", "Description", "Picture Filename", "Count", "Contains Money"]
     ]
     # Append the row to the worksheet
     worksheet.append_rows_to_worksheet(row_to_append, header=False)
