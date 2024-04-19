@@ -149,7 +149,6 @@ class DataRetriever:
         except Exception as e:
             print(e)
             pass
-    
     # getting the date and description from the excert of the article
     def extract_before_ellipsis(self, text):
         print("INside extract_before_ecli")
@@ -223,11 +222,14 @@ class DataRetriever:
                 # Convert the date string to a datetime object
                 date_object = datetime.strptime(date_extracted, "%b %d, %Y")
                 formatted_date= date_object.strftime("%Y%m%d")
-    
                 return formatted_date
+            else:
+                print("INside try")
+                return None
     
         except Exception as e:
-                return e, None
+            print(e, "possible date format is not found")
+            return None
     
     # comparing if the article time is with in the date of given period of time
     def is_within_time_frame(article_date, target_date):
