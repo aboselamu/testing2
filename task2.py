@@ -280,7 +280,7 @@ def main():
     url = "https://www.aljazeera.com/"
     bm.opening_the_news_Site(url)
     bm.search_the_phrase("Business")
-    rd = retriveData(bm)
+    rd = DataRetriever(bm)
     rd.retrive_data(2, "Business")
     save_data_to_Excel(workbook, sheet_name)
     workbook.save(excel_file_path)
