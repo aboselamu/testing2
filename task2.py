@@ -145,6 +145,8 @@ class DataRetriever:
         try:
             # Fetch the created work items and write them to the Excel file
             for item in workitems.inputs:
+                if(item):
+                    print("yes there is Item")
                 row = [item.payload[header] for header in headers]
                 print("inside save to excel for loop")
                 print(row, "Rowwwwwww")
@@ -290,9 +292,9 @@ def main():
     bm = br()
     url = "https://www.aljazeera.com/"
     bm.opening_the_news_Site(url)
-    bm.search_the_phrase("Israel")
+    bm.search_the_phrase("Business")
     rd = DataRetriever(bm)
-    rd.retrive_data(2, "Israel")
+    rd.retrive_data(2, "Business")
     rd.save_data_to_Excel(workbook, sheet_name)
     workbook.save(excel_file_path)
 
