@@ -151,7 +151,7 @@ class DataRetriever:
                 worksheet.append_rows_to_worksheet([row], name=sheet_name)
             print("workitems finished successfully")
         except Exception as e:
-            print(e, "save item didn't work)
+            print(e, "save item didn't wor"k)
             pass
     # getting the date and description from the excert of the article
     def extract_before_ellipsis(self, text):
