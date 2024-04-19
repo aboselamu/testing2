@@ -25,7 +25,7 @@ class DataRetriever:
         
         self.browser_manager = browser_manager
     @task
-    def retrive_data(self, num_months_ago, search_phrase):
+    def retrive_data(num_months_ago, search_phrase):
         
         browser = self.browser_manager.browser
         # Declearing varibale to return the date
@@ -138,29 +138,7 @@ class DataRetriever:
                 is_there_ShowMore = False
                 print("no button clicked")
                 pass
-    def save_data_to_Excel(self, workbook, sheet_name):
-    
-        worksheet = workbook.worksheet(sheet_name)
-    
-        headers = ["No", "Title", "Date", "Description", "Picture Filename", "Count", "Contains Money"]
-        print("inside save to excel function")
-        try:
-            # Fetch the created work items and write them to the Excel file
-            for item in workitems.inputs:
-                # item = workitems.inputs.currentprint("Received payload:", item.payload)
-                try:
-                    row = [item.payload[header] for header in headers]
-                except Exception as e:
-                    print(e, "row didn't work")
-                    return e
-                print("inside save to excel for loop")
-                print(row, "Rowwwwwww")
-                worksheet.append_rows_to_worksheet([row], header=False)
-                worksheet.save_workbook()
-            print("workitems finished successfully")
-        except Exception as e:
-            print(e, "save item didn't work")
-            pass
+
     # getting the date and description from the excert of the article
     def extract_before_ellipsis(self, text):
         print("INside extract_before_ecli")
@@ -272,11 +250,33 @@ class DataRetriever:
     
         # returning the number of times money appears and if there is search phrase in both
         return countT + countD,  bool(matchesT + matchesD)
-
-
-
-
 @task
+def save_data_to_Excel(self, workbook, sheet_name):
+
+    worksheet = workbook.worksheet(sheet_name)
+
+    headers = ["No", "Title", "Date", "Description", "Picture Filename", "Count", "Contains Money"]
+    print("inside save to excel function")
+    try:
+        # Fetch the created work items and write them to the Excel file
+        for item in workitems.inputs:
+            # item = workitems.inputs.currentprint("Received payload:", item.payload)
+            try:
+                row = [item.payload[header] for header in headers]
+            except Exception as e:
+                print(e, "row didn't work")
+                return e
+            print("inside save to excel for loop")
+            print(row, "Rowwwwwww")
+            worksheet.append_rows_to_worksheet([row], header=False)
+            worksheet.save_workbook()
+        print("workitems finished successfully")
+    except Exception as e:
+        print(e, "save item didn't work")
+        pass
+
+
+
 def main():
      # Define the path for the new Excel file in the output directory
     output_dir = Path(get_output_dir())
@@ -301,7 +301,7 @@ def main():
     bm.search_the_phrase("Business")
     rd = DataRetriever(bm)
     rd.retrive_data(1, "Business")
-    rd.save_data_to_Excel(workbook, sheet_name)
+    save_data_to_Excel(workbook, sheet_name)
     # workbook.save(excel_file_path)
 
     # Saving the workbook
