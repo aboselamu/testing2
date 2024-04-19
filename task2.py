@@ -147,10 +147,16 @@ class DataRetriever:
             for item in workitems.inputs:
                 if(item):
                     print("yes there is Item")
+                try:
                 row = [item.payload[header] for header in headers]
+                except Exception as e:
+                    print(e, "row didn't work")
+                    return e
+            
                 print("inside save to excel for loop")
                 print(row, "Rowwwwwww")
                 worksheet.append_rows_to_worksheet([row], name=sheet_name)
+                worksheet.save_workbook()
             print("workitems finished successfully")
         except Exception as e:
             print(e, "save item didn't work")
@@ -296,7 +302,7 @@ def main():
     rd = DataRetriever(bm)
     rd.retrive_data(2, "Business")
     rd.save_data_to_Excel(workbook, sheet_name)
-    workbook.save(excel_file_path)
+    # workbook.save(excel_file_path)
 
     # Saving the workbook
     workbook.save(excel_file_path)
