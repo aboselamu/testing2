@@ -63,6 +63,7 @@ class DataRetriever:
                 print("after excert")
                 # getting time and description of the post from excert
                 time_of_post, description  = self.extract_before_ellipsis(excert.text)
+                print(time_of_post, description, "check here")
                 article_date = self.formated_article_date(time_of_post)
                 print("after article date")
                 # check if the artices does contains date
@@ -148,12 +149,12 @@ class DataRetriever:
     
     # getting the date and description from the excert of the article
     def extract_before_ellipsis(self, text):
-        self.text = text
+        print("INside extract_before_ecli")
         # checking if the text contains the excert
         if len(text) <=0:
             print("extract text len 0")
             return 
-    
+            
         # Split the text at '...'
         date_part = ""
         description_part = ""
