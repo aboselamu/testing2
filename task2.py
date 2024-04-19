@@ -11,7 +11,7 @@ from datetime import datetime
 from robocorp.tasks import task
 from datetime import datetime, timedelta
 from robocorp.tasks import get_output_dir
-# from tasks import BrowserManager as br
+from tasks import BrowserManager as br
 
 class DataRetriever:
     def __init__(self):
