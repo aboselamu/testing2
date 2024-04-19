@@ -24,7 +24,7 @@ class DataRetriever:
     def __init__(self, browser_manager):
         
         self.browser_manager = browser_manager
-
+    @task
     def retrive_data(self, num_months_ago, search_phrase):
         
         browser = self.browser_manager.browser
@@ -103,8 +103,7 @@ class DataRetriever:
                             # for article in articles:
                             workitems.outputs.create(payload=ready_article)
                             print("work item created")
-                            item = workitems.inputs.current
-                            print("Received payload:", item.payload)
+
     
     
                             # data.append([counter,title.text, article_date, description, 
@@ -148,6 +147,7 @@ class DataRetriever:
         try:
             # Fetch the created work items and write them to the Excel file
             for item in workitems.inputs:
+                item = workitems.inputs.currentprint("Received payload:", item.payload)
             	try:
             		row = [item.payload[header] for header in headers]
             	except Exception as e:
