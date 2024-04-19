@@ -9,6 +9,7 @@ from robocorp import excel
 from robocorp import storage
 from datetime import datetime
 from robocorp.tasks import task
+from robocorp.workitems import WorkItems
 from datetime import datetime, timedelta
 from robocorp.tasks import get_output_dir
 from tasks import BrowserManager as br
