@@ -172,10 +172,10 @@ class DataRetriever:
     
     # formating the article's date
     def formated_article_date(date_extracted):
-    
+        print("inside formated_ articl")
         # cleaning the date part
         date_extracted = date_extracted.strip()
-    
+        print(date_extracted, "heee")
         # Defining possible hours, minutes and seconds 
         possible_hms = ["second", "seconds","min\xadutes", 
                             "minute", "minutes", "hour","hours"]
@@ -281,9 +281,9 @@ def main():
     bm = br()
     url = "https://www.aljazeera.com/"
     bm.opening_the_news_Site(url)
-    bm.search_the_phrase("Business")
+    bm.search_the_phrase("Israel")
     rd = DataRetriever(bm)
-    rd.retrive_data(2, "Business")
+    rd.retrive_data(2, "Israel")
     save_data_to_Excel(workbook, sheet_name)
     workbook.save(excel_file_path)
 
