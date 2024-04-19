@@ -17,8 +17,8 @@ class DataRetriever:
     def __init__(self):
         self.data = []
 
-    def retrieve_data(self, search_results, time_frame):
-        pass
+    # def retrieve_data(self, search_results, time_frame):
+    #     pass
     def __init__(self, browser_manager):
         
         self.browser_manager = browser_manager
@@ -27,7 +27,7 @@ class DataRetriever:
         
         browser = self.browser_manager.browser
         # Declearing varibale to return the date
-        data =[]
+        # data =[]
         counter = 1
         # Handling the possible inputs
         if num_months_ago == 0:
@@ -259,10 +259,35 @@ class DataRetriever:
 
 @task
 def main():
+     # Define the path for the new Excel file in the output directory
+    output_dir = Path(get_output_dir())
+    excel_file_path = output_dir / "Articles.xlsx"
+    
+    # Create a new Excel workbook and add a worksheet with the name 'Sheet1'
+    workbook = excel.create_workbook(fmt="xlsx", sheet_name="Sheet1")
+    
+    
+    # Append a row with column headers
+    sheet_name = "Sheet1"
+    worksheet = workbook.worksheet(sheet_name)
+    row_to_append = [
+        ["No", "Title", "Date", "Description", "Picture Filename", "Count", "Contains Money"]
+    ]
+    # Append the row to the worksheet
+    worksheet.append_rows_to_worksheet(row_to_append, header=False)
+    
     bm = br()
     url = "https://www.aljazeera.com/"
     bm.opening_the_news_Site(url)
     bm.search_the_phrase("Business")
     rd = retriveData(bm)
-    rd.retrive_data(2)
+    rd.retrive_data(2, "Business")
+    save_data_to_Excel(workbook, sheet_name)
+    workbook.save(excel_file_path)
+
+    # Saving the workbook
+    workbook.save(excel_file_path)
+    
+    # Close the browser
+    browser_instance.close_all_browsers()
     
