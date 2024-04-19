@@ -147,16 +147,16 @@ class DataRetriever:
         try:
             # Fetch the created work items and write them to the Excel file
             for item in workitems.inputs:
-                item = workitems.inputs.currentprint("Received payload:", item.payload)
-            	try:
-            		row = [item.payload[header] for header in headers]
-            	except Exception as e:
-            		print(e, "row didn't work")
-            		return e
-            	print("inside save to excel for loop")
-            	print(row, "Rowwwwwww")
-            	worksheet.append_rows_to_worksheet([row], header=False)
-            	worksheet.save_workbook()
+                # item = workitems.inputs.currentprint("Received payload:", item.payload)
+                try:
+                    row = [item.payload[header] for header in headers]
+                except Exception as e:
+                    print(e, "row didn't work")
+                    return e
+                print("inside save to excel for loop")
+                print(row, "Rowwwwwww")
+                worksheet.append_rows_to_worksheet([row], header=False)
+                worksheet.save_workbook()
             print("workitems finished successfully")
         except Exception as e:
             print(e, "save item didn't work")
