@@ -47,7 +47,7 @@ class DataRetriever:
         is_there_ShowMore = True
             
         while is_there_ShowMore:
-
+            print("Inside while loop")
             # Search result section
             search_list_selector = browser.find_element("xpath=//*[@id='main-content-area']/div[2]/div[2]")
             articles = browser.find_elements("tag:article", parent=search_list_selector)
@@ -57,14 +57,14 @@ class DataRetriever:
 
             # for each articles 
             for article in articles:
-                
+                print("inside article for loop") 
                 # getting excert section
                 excert = browser.find_element("tag:p",parent=article)
-
+                print("after excert")
                 # getting time and description of the post from excert
                 time_of_post, description  = extract_before_ellipsis(excert.text)
                 article_date = formated_article_date(time_of_post)
-
+                print("after article date")
                 # check if the artices does contains date
                 if(article_date == None):
                     continue
@@ -104,7 +104,7 @@ class DataRetriever:
                             counter+=1
     
                 except Exception as e:
-                    print(e)
+                    print(e, "try to put everything")
     
             # try to locate and close the ads section
             try:
@@ -112,6 +112,7 @@ class DataRetriever:
                 browser.click_button(ads_locator) 
     
             except Exception as e:
+                print("no ads locarion")
                 pass
             
             # Trying to find if there is more article
@@ -127,6 +128,7 @@ class DataRetriever:
         
             except Exception as e: 
                 is_there_ShowMore = False
+                print("no button clicked")
                 pass
     def save_data_to_Excel(workbook, sheet_name):
     
