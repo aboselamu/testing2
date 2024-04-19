@@ -50,6 +50,6 @@ def main():
     bm = br()
     url = "https://www.aljazeera.com/"
     bm.opening_the_news_Site(url)
-    bm.search_the_phrase("Business")")
+    bm.search_the_phrase("Business")
     rd = retriveData(bm)
     retrive_data(2)
