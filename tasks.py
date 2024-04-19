@@ -77,9 +77,3 @@ class BrowserManager:
         # sort by time
         dropdown_locator = "//select[@id='search-sort-option']/option[1]" 
         self.browser.click_element(dropdown_locator)
-@task
-def main():
-    bm = BrowserManager()
-    url = "https://www.aljazeera.com/"
-    bm.opening_the_news_Site(url)
-    bm.search_the_phrase("Business")
