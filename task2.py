@@ -298,5 +298,5 @@ def main():
     workbook.save(excel_file_path)
     
     # Close the browser
-    browser_instance.close_all_browsers()
+    bm.browser_instance.close_all_browsers()
     
