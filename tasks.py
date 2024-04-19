@@ -39,7 +39,8 @@ class BrowserManager:
         print("oppend browser at last")
 
 
-    def search_the_phrase(self,phrase):
+    def search_the_phrase(self, phrase):
+        self.phrase = phrase
         print("inside search method")
         if(self.browser):
             print("found browser")
