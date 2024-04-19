@@ -52,4 +52,4 @@ def main():
     bm.opening_the_news_Site(url)
     bm.search_the_phrase("Business")
     rd = retriveData(bm)
-    retrive_data(2)
+    rd.retrive_data(2)
