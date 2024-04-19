@@ -145,18 +145,15 @@ class DataRetriever:
         try:
             # Fetch the created work items and write them to the Excel file
             for item in workitems.inputs:
-                if(item):
-                    print("yes there is Item")
-                try:
-                row = [item.payload[header] for header in headers]
-                except Exception as e:
-                    print(e, "row didn't work")
-                    return e
-            
-                print("inside save to excel for loop")
-                print(row, "Rowwwwwww")
-                worksheet.append_rows_to_worksheet([row], name=sheet_name)
-                worksheet.save_workbook()
+            	try:
+            		row = [item.payload[header] for header in headers]
+            	except Exception as e:
+            		print(e, "row didn't work")
+            		return e
+            	print("inside save to excel for loop")
+            	print(row, "Rowwwwwww")
+            	worksheet.append_rows_to_worksheet([row], name=sheet_name)
+            	worksheet.save_workbook()
             print("workitems finished successfully")
         except Exception as e:
             print(e, "save item didn't work")
@@ -309,4 +306,3 @@ def main():
     
     # Close the browser
     bm.close_browser()
-    
