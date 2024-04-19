@@ -70,8 +70,8 @@ class DataRetriever:
                     print(e, "article, date format")
                 print("after article date")
                 # check if the artices does contains date
-                if(article_date == None):
-                    continue
+                # if(article_date == None):
+                #     continue
                 try:
 
                     # checking the article date is in the time period of the input
@@ -173,7 +173,7 @@ class DataRetriever:
         return date_part, description_part
     
     # formating the article's date
-    def formated_article_date(date_extracted):
+    def formated_article_date(self, date_extracted):
         print("inside formated_ articl")
         # cleaning the date part
         date_extracted = date_extracted.strip()
@@ -232,7 +232,7 @@ class DataRetriever:
             return None
     
     # comparing if the article time is with in the date of given period of time
-    def is_within_time_frame(article_date, target_date):
+    def is_within_time_frame(self, article_date, target_date):
     
         # Convert article date string to a datetime object
         try:
@@ -245,7 +245,7 @@ class DataRetriever:
     
     # checking if the topics and description contains money 
     # and how many times the title and description contains the search phrase
-    def no_of_topic_and_money_amount(title, description, search_phrase):
+    def no_of_topic_and_money_amount(self, title, description, search_phrase):
     
         # Trying to find the number of times the title and description contains
         countT = title.split(" ").count(search_phrase)
