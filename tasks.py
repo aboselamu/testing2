@@ -80,3 +80,5 @@ class BrowserManager:
         dropdown_locator = "//select[@id='search-sort-option']/option[1]" 
         self.browser.click_element(dropdown_locator)
         print("completed opening and searching")
+    def close_browser(self):
+        self.browser.close_all_browsers()
